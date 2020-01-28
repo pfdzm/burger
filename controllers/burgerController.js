@@ -21,10 +21,10 @@ router.post("/api/burgers", (req, res) => {
 
 router.put("/api/burgers/:id", (req, res) => {
   burger.update(req.params.id, data => {
-    if (data.affectedRows == 0) {
-      res.sendStatus(404).end();
+    if (data.affectedRows === 0) {
+      res.sendStatus(404);
     } else {
-      res.redirect("/");
+      res.sendStatus(200);
     }
   });
 });
