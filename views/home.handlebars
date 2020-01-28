@@ -1,25 +1,41 @@
-<form action="/api/burgers" method="post">
-    <label for="burger_name">What kind of burger would you like?</label>
-    <input type="text" name="burger_name" id="burger_name">
-    <button type="submit">Submit</button>
-</form>
+<div class="jumbotron bg-warning">
+    {{!-- <h1 class="display-4">Order a burger here:</h1> --}}
+    <div class="text-center">
+        <img src="/images/icons8-hamburger-96.png" alt="">
 
-<h2>Burgers fresh off the grill!</h2>
+    </div>
+    <form action="/api/burgers" method="post">
+        <div class="form-group">
+            <label for="burger_name">What kind of burger would you like?</label>
+            <input class="form-control" type="text" name="burger_name" id="burger_name">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="row">
 
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    {{> burgers/burger-block devour=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
+    <div class="col-md-6">
+        <h2>Burgers fresh off the grill!</h2>
 
-<h2>Burgers that have been devoured!</h2>
+        <ul>
+            {{#each burgers}}
+            {{#unless devoured}}
+            {{> burgers/burger-block devour=true}}
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
 
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    {{> burgers/burger-block devour=false}}
-    {{/if}}
-    {{/each}}
-</ul>
+    <div class="col-md-6">
+
+        <h2>Burgers that have been devoured!</h2>
+
+        <ul>
+            {{#each burgers}}
+            {{#if devoured}}
+            {{> burgers/burger-block devour=false}}
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
