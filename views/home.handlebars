@@ -1,0 +1,25 @@
+<form action="/api/burgers" method="post">
+    <label for="burger_name">What kind of burger would you like?</label>
+    <input type="text" name="burger_name" id="burger_name">
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Burgers fresh off the grill!</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devour=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Burgers that have been devoured!</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block devour=false}}
+    {{/if}}
+    {{/each}}
+</ul>
